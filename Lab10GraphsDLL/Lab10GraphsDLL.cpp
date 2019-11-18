@@ -69,7 +69,7 @@ bool Graph::hasEdge(int b, int c) {
 	if (spot != -1) {
 		Node* Temp = graphPoints[spot];
 		while (Temp->next != NULL) {
-			if (Temp->val == c) {
+			if (Temp->next->val == c) {
 				return true;
 			}
 			Temp = Temp->next;
@@ -91,6 +91,7 @@ vector<int> Graph::inEdges(int c) {
 }
 
 //May also be able to do inedges method here since all points are connected and none are just one way
+//But this is probably the logic that they're looking for
 vector<int> Graph::outEdges(int b) {
 	vector<int> vals;
 	vector<int> connectors;
