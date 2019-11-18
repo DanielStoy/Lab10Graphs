@@ -33,6 +33,8 @@ Graph::~Graph() {
 		}
 		delete temp;
 	}
+	
+	graphPoints.empty();
 }
 
 int Graph::FindPoint(int val) {
