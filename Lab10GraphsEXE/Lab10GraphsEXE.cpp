@@ -13,3 +13,9 @@ int main()
 	vector<int> getBoisReturns = myGraph.outEdges(1);
 	cout << myGraph.printMatrix();
 }
+
+//Todo's
+//Deconstructor
+//Remove
+//Main Program
+//Reading in from a file
