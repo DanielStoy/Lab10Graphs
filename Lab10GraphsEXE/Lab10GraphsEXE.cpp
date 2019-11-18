@@ -15,7 +15,7 @@ int main()
 }
 
 //Todo's
-//Deconstructor - jakob wardega 
-//Remove
+//Deconstructor - not jakob wardega 
+//Remove - jakob wardega
 //Main Program	
 //Reading in from a file
