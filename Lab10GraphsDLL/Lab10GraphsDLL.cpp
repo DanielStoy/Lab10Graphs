@@ -108,6 +108,16 @@ vector<int> Graph::outEdges(int b) {
 }
 
 string Graph::printMatrix() {
-	string s = "Hoi";
+	string s;
+	Node* Temp;
+	for (int i = 0; i < graphPoints.size(); i++) {
+		Node* Temp = graphPoints[i];
+		s += "Connected to " + to_string(Temp->val) + ": ";
+		while (Temp->next != NULL) {
+			s += to_string(Temp->next->val) + " ";
+			Temp = Temp->next;
+		}
+		s += "\n";
+	}
 	return s;
 }
