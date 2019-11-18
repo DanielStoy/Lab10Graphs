@@ -14,7 +14,6 @@ Graph::Graph() {
 }
 
 Graph::~Graph() {
-
 }
 
 int Graph::FindPoint(int val) {
