@@ -38,5 +38,12 @@ namespace GraphsUnitTests
 			Assert::AreEqual(myInts.at(0), myGraph.inEdges(1).at(0));
 			Assert::AreEqual(myInts.at(1), myGraph.inEdges(1).at(1));
 		}
+
+		TEST_METHOD(Print) {
+			Graph myGraph;
+			string s = "Connected to 1: 5 \nConnected to 5: 1 \n";
+			myGraph.addEdge(1, 5);
+			Assert::AreEqual(s, myGraph.printMatrix());
+		}
 	};
 }
