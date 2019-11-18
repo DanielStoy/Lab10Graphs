@@ -14,6 +14,25 @@ Graph::Graph() {
 }
 
 Graph::~Graph() {
+	for (int i = graphPoints.size() - 1; i >= 0; i--)
+	{
+		Node* temp = graphPoints[i];
+
+		if (temp->next == nullptr)
+		{
+
+		}
+		else 
+		{
+			while (temp->next != NULL)
+			{
+				Node* prv = temp;
+				temp = temp->next;
+				delete prv;
+			}
+		}
+		delete temp;
+	}
 }
 
 int Graph::FindPoint(int val) {
