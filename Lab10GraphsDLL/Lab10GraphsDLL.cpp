@@ -5,15 +5,18 @@
 #include "Lab10GraphsDLL.h"
 #include <stdexcept>
 
+//Custom Node constructor
 Node::Node(int Val, Node* Next) {
 	val = Val;
 	next = Next;
 }
 
+//Default Graph constructor
 Graph::Graph() {
 
 }
 
+//Custom Graph constructor that initializes points
 Graph::Graph(int numVertex)
 {
 	for (int i = 0; i < numVertex; i++)
@@ -23,6 +26,7 @@ Graph::Graph(int numVertex)
 	}
 }
 
+//Destroyies every linked list in the vectors
 Graph::~Graph() {
 	for (int i = graphPoints.size() - 1; i >= 0; i--)
 	{
@@ -47,6 +51,7 @@ Graph::~Graph() {
 	graphPoints.empty();
 }
 
+//Finds the location in graphPoints of the specified value
 int Graph::FindPoint(int val) {
 	for (int i = 0; i < graphPoints.size(); i++) {
 		if (graphPoints[i]->val == val) {
@@ -90,10 +95,11 @@ bool Graph::addEdge(int b, int c) {
 	return false;
 }
 
-//NOT WORKING
-//I WROTE IT BAD
+//Method to remove an edge
+//Does not remove a point from the graph
 bool Graph::removeEdge(int b, int c) {
 	//Check if graph has that edge
+	//Else exit the code with an error
 	if (!hasEdge(b, c))
 	{
 		return false;
@@ -127,6 +133,7 @@ bool Graph::removeEdge(int b, int c) {
 	return false;
 }
 
+//Checks if the graph has an edge
 bool Graph::hasEdge(int b, int c) {
 	int spot = FindPoint(b);
 	if (spot != -1) {
@@ -142,6 +149,7 @@ bool Graph::hasEdge(int b, int c) {
 }
 
 //Fast boi
+//Returns which points go into a specified point
 vector<int> Graph::inEdges(int c) {
 	vector<int> vals;
 	int spot = FindPoint(c);
@@ -159,6 +167,8 @@ vector<int> Graph::inEdges(int c) {
 
 //May also be able to do inedges method here since all points are connected and none are just one way
 //But this is probably the logic that they're looking for
+//
+//Returns a list of points that have an edge shared with the specified point
 vector<int> Graph::outEdges(int b) {
 	if (FindPoint(b) == -1)
 	{
@@ -178,6 +188,7 @@ vector<int> Graph::outEdges(int b) {
 	return vals;
 }
 
+//Prints out the Graph in its matrix form
 string Graph::printMatrix() {
 	if (graphPoints.size() == 0)
 	{

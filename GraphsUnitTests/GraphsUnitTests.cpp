@@ -11,6 +11,7 @@ namespace GraphsUnitTests
 	TEST_CLASS(GraphsUnitTests)
 	{
 	public:
+		//Tests for Constructors
 		TEST_METHOD(Constructor)
 		{
 			Graph myGraph;
@@ -27,6 +28,7 @@ namespace GraphsUnitTests
 			Assert::AreEqual(givenStr, expectedStr);
 		}
 
+		//AddEdge Unit Tests
 		TEST_METHOD(AddEdge)
 		{
 			Graph myGraph;
@@ -46,6 +48,7 @@ namespace GraphsUnitTests
 			Assert::IsTrue(myGraph.hasEdge(15, 45));
 		}
 
+		//Remove Edge Unit Test
 		TEST_METHOD(RemoveEdge)
 		{
 			Graph myGraph;
@@ -68,6 +71,7 @@ namespace GraphsUnitTests
 			Assert::IsFalse(myGraph.removeEdge(1, 9));
 		}
 
+		//Has Edge Tests
 		TEST_METHOD(HasEdge)
 		{
 			Graph myGraph;
@@ -85,6 +89,7 @@ namespace GraphsUnitTests
 			Assert::IsFalse(myGraph.hasEdge(1, 6));
 		}
 
+		//OutEdge Unit tests
 		TEST_METHOD(OutEdge)
 		{
 			Graph myGraph;
@@ -107,6 +112,8 @@ namespace GraphsUnitTests
 			function<vector<int>(void)> f1 = [myGraph] { return myGraph->outEdges(7); };
 			Assert::ExpectException<invalid_argument>(f1);
 		}
+
+		//InEdge Unit Tests
 		TEST_METHOD(inEdge) {
 			Graph myGraph;
 			vector<int> myInts = { 5,6,7 };
@@ -140,6 +147,7 @@ namespace GraphsUnitTests
 			Assert::ExpectException<invalid_argument>(f1);
 		}
 
+		//Print Unit Tests
 		TEST_METHOD(Print) {
 			Graph myGraph;
 			string s = "Connected to 1: 5 \nConnected to 5: 1 \n";
