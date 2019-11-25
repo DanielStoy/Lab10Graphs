@@ -3,6 +3,7 @@
 
 #include "framework.h"
 #include "Lab10GraphsDLL.h"
+#include <stdexcept>
 
 Node::Node(int Val, Node* Next) {
 	val = Val;
@@ -11,6 +12,15 @@ Node::Node(int Val, Node* Next) {
 
 Graph::Graph() {
 
+}
+
+Graph::Graph(int numVertex)
+{
+	for (int i = 0; i < numVertex; i++)
+	{
+		Node* temp = new Node(i, nullptr);
+		graphPoints.push_back(temp);
+	}
 }
 
 Graph::~Graph() {
@@ -80,6 +90,8 @@ bool Graph::addEdge(int b, int c) {
 	return false;
 }
 
+//NOT WORKING
+//I WROTE IT BAD
 bool Graph::removeEdge(int b, int c) {
 	//Check if graph has that edge
 	if (!hasEdge(b, c))
@@ -90,7 +102,7 @@ bool Graph::removeEdge(int b, int c) {
 	//Remove b -> c
 	int spot = FindPoint(b);
 	Node* temp = graphPoints[spot];
-	while (temp->next->val == c)
+	while (temp->next->val != c)
 	{
 		temp = temp->next;
 	}
@@ -108,7 +120,7 @@ bool Graph::removeEdge(int b, int c) {
 	//Remove c -> b
 	spot = FindPoint(c);
 	temp = graphPoints[spot];
-	while (temp->next->val == b)
+	while (temp->next->val != b)
 	{
 		temp = temp->next;
 	}
@@ -144,6 +156,10 @@ bool Graph::hasEdge(int b, int c) {
 vector<int> Graph::inEdges(int c) {
 	vector<int> vals;
 	int spot = FindPoint(c);
+	if (spot == -1)
+	{
+		throw invalid_argument("val");
+	}
 	Node* Temp = graphPoints[spot];
 	while (Temp->next != NULL) {
 		vals.push_back(Temp->next->val);
@@ -155,6 +171,10 @@ vector<int> Graph::inEdges(int c) {
 //May also be able to do inedges method here since all points are connected and none are just one way
 //But this is probably the logic that they're looking for
 vector<int> Graph::outEdges(int b) {
+	if (FindPoint(b) == -1)
+	{
+		throw invalid_argument("val");
+	}
 	vector<int> vals;
 	vector<int> connectors;
 	for (int i = 0; i < graphPoints.size(); i++) {
@@ -170,6 +190,10 @@ vector<int> Graph::outEdges(int b) {
 }
 
 string Graph::printMatrix() {
+	if (graphPoints.size() == 0)
+	{
+		return "Empty Matrix";
+	}
 	string s;
 	Node* Temp;
 	for (int i = 0; i < graphPoints.size(); i++) {

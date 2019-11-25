@@ -21,11 +21,12 @@ private:
 	int FindPoint(int val);
 public:
 	Graph();								// constructor
+	Graph(int num);							// constructor 
 	bool addEdge(int b, int c);				// Adds the edge (b,c) to E
 	bool removeEdge(int b, int c);			// Removes the edge (b,c) from E
 	bool hasEdge(int b, int c);				// Checks if (b,c) spans E
 	vector<int> outEdges(int b);			// given b, Returns a set of cs for bRc that spans E
 	vector<int> inEdges(int c);				// given c, Returns a set of bs for bRc that spans E
 	string printMatrix();					// columns : bs rows: all cs for bRc
-	~Graph();
+	~Graph();								// Deconstructor
 };
