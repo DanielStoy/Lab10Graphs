@@ -58,6 +58,16 @@ namespace GraphsUnitTests
 			Assert::IsFalse(myGraph.hasEdge(1, 2));
 		}
 
+		TEST_METHOD(RemoveEdge_Invalid)
+		{
+			Graph myGraph;
+			myGraph.addEdge(1, 2);
+			myGraph.addEdge(1, 3);
+			myGraph.addEdge(1, 5);
+			
+			Assert::IsFalse(myGraph.removeEdge(1, 9));
+		}
+
 		TEST_METHOD(HasEdge)
 		{
 			Graph myGraph;
@@ -108,7 +118,7 @@ namespace GraphsUnitTests
 			Assert::AreEqual(myInts.at(2), myGraph.inEdges(1).at(2));
 		}
 
-		TEST_METHOD(inEdgeFalse) {
+		TEST_METHOD(InEdge_False) {
 			Graph myGraph;
 			vector<int> myInts = { 3, 2, 1 };
 			myGraph.addEdge(1, 5);

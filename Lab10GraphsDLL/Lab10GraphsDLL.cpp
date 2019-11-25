@@ -101,22 +101,17 @@ bool Graph::removeEdge(int b, int c) {
 
 	//Remove b -> c
 	int spot = FindPoint(b);
-	Node* temp = graphPoints[spot];
+	Node* temp = graphPoints.at(spot);
 	while (temp->next->val != c)
 	{
 		temp = temp->next;
 	}
 	//Make sure that no value is lost from the deletion of the node.
 	Node* nodeToRemove = temp->next;
-	if (nodeToRemove->next == nullptr)
-	{
-		temp->next == nullptr;
-	}
-	else
-	{
-		temp->next == nodeToRemove->next;
-	}
 
+	temp->next = nodeToRemove->next;
+	delete nodeToRemove;
+	
 	//Remove c -> b
 	spot = FindPoint(c);
 	temp = graphPoints[spot];
@@ -126,14 +121,8 @@ bool Graph::removeEdge(int b, int c) {
 	}
 	//Make sure that no value is lost from the deletion of the node.
 	nodeToRemove = temp->next;
-	if (nodeToRemove->next == nullptr)
-	{
-		temp->next == nullptr;
-	}
-	else
-	{
-		temp->next == nodeToRemove->next;
-	}
+	temp->next = nodeToRemove->next;
+	delete nodeToRemove;
 
 	return false;
 }
