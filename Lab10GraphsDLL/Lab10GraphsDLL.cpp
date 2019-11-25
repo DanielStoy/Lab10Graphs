@@ -81,6 +81,48 @@ bool Graph::addEdge(int b, int c) {
 }
 
 bool Graph::removeEdge(int b, int c) {
+	//Check if graph has that edge
+	if (!hasEdge(b, c))
+	{
+		return false;
+	}
+
+	//Remove b -> c
+	int spot = FindPoint(b);
+	Node* temp = graphPoints[spot];
+	while (temp->next->val == c)
+	{
+		temp = temp->next;
+	}
+	//Make sure that no value is lost from the deletion of the node.
+	Node* nodeToRemove = temp->next;
+	if (nodeToRemove->next == nullptr)
+	{
+		temp->next == nullptr;
+	}
+	else
+	{
+		temp->next == nodeToRemove->next;
+	}
+
+	//Remove c -> b
+	spot = FindPoint(c);
+	temp = graphPoints[spot];
+	while (temp->next->val == b)
+	{
+		temp = temp->next;
+	}
+	//Make sure that no value is lost from the deletion of the node.
+	nodeToRemove = temp->next;
+	if (nodeToRemove->next == nullptr)
+	{
+		temp->next == nullptr;
+	}
+	else
+	{
+		temp->next == nodeToRemove->next;
+	}
+
 	return false;
 }
 
