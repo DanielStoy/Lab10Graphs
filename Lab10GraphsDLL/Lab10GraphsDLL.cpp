@@ -181,7 +181,7 @@ vector<int> Graph::outEdges(int b) {
 string Graph::printMatrix() {
 	if (graphPoints.size() == 0)
 	{
-		return "Empty Matrix";
+		return "Empty Matrix\n";
 	}
 	string s;
 	Node* Temp;
