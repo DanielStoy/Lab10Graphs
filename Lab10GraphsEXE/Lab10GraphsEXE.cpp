@@ -5,19 +5,29 @@
 int main()
 {
 	Graph myGraph;
-	myGraph.addEdge(1, 2);
-	myGraph.addEdge(1, 3);
-	myGraph.addEdge(1, 5);
-	bool trueboi = myGraph.hasEdge(1, 3);
-	bool falseboi = myGraph.hasEdge(1, 10);
-	vector<int> getBois = myGraph.inEdges(1);
-	vector<int> getBoisReturns = myGraph.outEdges(1);
-	myGraph.~Graph();
-	cout << myGraph.printMatrix();
 
 	int action;
 	int p1;
 	int p2;
+	int vertices;
+
+	cout << "Input number of vertices:" << endl;
+	cin >> vertices;
+
+	while (vertices < 0)
+	{
+		cout << "Enter a positive number:" << endl;
+		cin >> vertices;
+	}
+
+	if (vertices > 0)
+	{
+		Graph myGraph(vertices);
+	}
+	else if (vertices == 0)
+	{
+		Graph myGaph();
+	}
 
 	cout << "Press 1 to add an edge to graph. \nPress 2 remove an edge from graph. \nPress 3 Find an edge in the graph." << endl;
 	cout << "Press 4 Find the out edges of a vertices. \nPress 5 Find the in edges of a vertices. \nPress 6 To Print out Adjacency Matrix." << endl;

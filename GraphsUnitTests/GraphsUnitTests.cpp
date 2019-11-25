@@ -139,7 +139,7 @@ namespace GraphsUnitTests
 
 		TEST_METHOD(Print_Empty) {
 			Graph myGraph;
-			string s = "Empty Matrix";
+			string s = "Empty Matrix\n";
 
 			Assert::AreEqual(s, myGraph.printMatrix());
 		}
