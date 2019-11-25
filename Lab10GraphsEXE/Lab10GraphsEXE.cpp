@@ -12,6 +12,7 @@ int main()
 	bool falseboi = myGraph.hasEdge(1, 10);
 	vector<int> getBois = myGraph.inEdges(1);
 	vector<int> getBoisReturns = myGraph.outEdges(1);
+	myGraph.~Graph();
 	cout << myGraph.printMatrix();
 
 	int action;
