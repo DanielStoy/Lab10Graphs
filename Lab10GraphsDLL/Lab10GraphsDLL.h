@@ -7,12 +7,11 @@
 #include <vector>
 #include <string>
 using namespace std;
-
 class LAB10GRAPHSDLL_API Node {
 public:
 	Node(int Val, Node* Next);
-	int val;
-	Node* next;
+	int val;								//Represents a point
+	Node* next;								//The next pointer represents an edge between two points
 };
 
 class LAB10GRAPHSDLL_API Graph {
