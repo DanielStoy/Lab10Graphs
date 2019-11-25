@@ -10,6 +10,7 @@ int main()
 	int p1;
 	int p2;
 	int vertices;
+	vector <int> vals;
 
 	cout << "Input number of vertices:" << endl;
 	cin >> vertices;
@@ -79,7 +80,12 @@ int main()
 			cout << "FINDING OUT EDGE OF A POINT" << endl;
 			cout << "Enter point for out edges." << endl;
 			cin >> p1;
-			myGraph.outEdges(p1);
+			vals = myGraph.outEdges(p1);
+			for (int i = 0; i < size(vals); i++) 
+			{
+				cout << "Out edges: " << endl; 
+				cout << vals[i] << endl;
+			}
 			cout << "Enter new action." << endl;
 			cin >> action;
 			break;
@@ -88,7 +94,12 @@ int main()
 			cout << "FINDING IN EDGE OF A POINT" << endl;
 			cout << "Enter point for in edges." << endl;
 			cin >> p1;
-			myGraph.inEdges(p1);
+			vals = myGraph.inEdges(p1);
+			for (int i = 0; i < size(vals); i++)
+			{
+				cout << "In edges: " << endl;
+				cout << vals[i] << endl;
+			}
 			cout << "Enter new action." << endl;
 			cin >> action;
 			break;
