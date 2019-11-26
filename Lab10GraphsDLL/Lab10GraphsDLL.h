@@ -21,6 +21,8 @@ private:
 public:
 	Graph();								// constructor
 	Graph(int num);							// constructor 
+	Graph(vector<Node * > points);
+	Graph ReadTxtFile();						// Reads "Matrix.txt"
 	bool addEdge(int b, int c);				// Adds the edge (b,c) to E
 	bool removeEdge(int b, int c);			// Removes the edge (b,c) from E
 	bool hasEdge(int b, int c);				// Checks if (b,c) spans E

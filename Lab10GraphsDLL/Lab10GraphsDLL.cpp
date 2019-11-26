@@ -1,9 +1,14 @@
 // Lab10GraphsDLL.cpp : Defines the exported functions for the DLL.
 //
 
+//#include "..//TxtFileHolder/"
 #include "framework.h"
 #include "Lab10GraphsDLL.h"
 #include <stdexcept>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
 //Custom Node constructor
 Node::Node(int Val, Node* Next) {
@@ -24,6 +29,11 @@ Graph::Graph(int numVertex)
 		Node* temp = new Node(i, nullptr);
 		graphPoints.push_back(temp);
 	}
+}
+
+Graph::Graph(vector<Node*> points)
+{
+	graphPoints = points;
 }
 
 //Destroyies every linked list in the vectors
@@ -51,6 +61,37 @@ Graph::~Graph() {
 	graphPoints.empty();
 }
 
+//Reads the adjacency matrix from "Matrix.txt"
+Graph Graph::ReadTxtFile()
+{
+	Graph myGraph;
+
+	std::ifstream file;
+	file.open("..//matrix.txt");
+
+	std::string inputRow;
+	int i = 0;
+	Node* temp;
+	getline(file, inputRow);
+	while (inputRow != "")
+	{
+		myGraph.graphPoints.push_back(new Node(i, nullptr));
+		temp = myGraph.graphPoints[i];
+		for (int j = 0; j < inputRow.length(); j++)
+		{
+			if (inputRow[j] == '1')
+			{
+				temp->next = new Node(j, nullptr);
+				temp = temp->next;
+			}
+			i++;
+		}
+		getline(file, inputRow);
+	}
+	file.close();
+
+	return myGraph;
+}
 //Finds the location in graphPoints of the specified value
 int Graph::FindPoint(int val) {
 	for (int i = 0; i < graphPoints.size(); i++) {

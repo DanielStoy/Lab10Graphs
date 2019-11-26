@@ -2,8 +2,43 @@
 #include "..///Lab10GraphsDLL/Lab10GraphsDLL.h"
 #include <fstream>
 
+
 int main()
 {
+	std::ifstream file;
+	file.open("..//matrix.txt");
+	
+	std::string str;
+	
+	//getline(file, str);
+
+	vector<Node*> myPoints;
+
+
+	int i = 0;
+	Node* temp;
+	while (getline(file, str)/*str != ""*/)
+	{
+		myPoints.push_back(new Node(i, nullptr));
+		temp = myPoints[i];
+		for (int j = 0; j < size(str); j++)
+		{
+			if (str[j] == '1')
+			{
+				temp->next = new Node(j, nullptr);
+				temp = temp->next;
+			}
+			
+		}
+		i++;
+		//getline(file, inputRow);
+	}
+	file.close();
+
+	
+	Graph readInGraph(myPoints);
+	cout << readInGraph.printMatrix();
+
 	Graph myGraph;
 
 	int action;
@@ -81,11 +116,12 @@ int main()
 			cout << "Enter point for out edges." << endl;
 			cin >> p1;
 			vals = myGraph.outEdges(p1);
+			cout << "Out edges: ";
 			for (int i = 0; i < size(vals); i++) 
-			{
-				cout << "Out edges: " << endl; 
-				cout << vals[i] << endl;
+			{ 
+				cout << vals[i] + " ";
 			}
+			cout << endl;
 			cout << "Enter new action." << endl;
 			cin >> action;
 			break;
@@ -95,11 +131,12 @@ int main()
 			cout << "Enter point for in edges." << endl;
 			cin >> p1;
 			vals = myGraph.inEdges(p1);
+			cout << "In edges: ";
 			for (int i = 0; i < size(vals); i++)
-			{
-				cout << "In edges: " << endl;
-				cout << vals[i] << endl;
+			{				
+				cout << vals[i] + " ";
 			}
+			cout << endl;
 			cout << "Enter new action." << endl;
 			cin >> action;
 			break;

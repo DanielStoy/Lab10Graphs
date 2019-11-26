@@ -161,5 +161,14 @@ namespace GraphsUnitTests
 
 			Assert::AreEqual(s, myGraph.printMatrix());
 		}
+
+		TEST_METHOD(ReadTxtFile_Test)
+		{
+			string expectedStr = "Connected to 0: 1\nConnected to 1: 0 \nConnected to 2: 2 \n";
+			Graph myGraph;
+			myGraph = myGraph.ReadTxtFile();
+
+			Assert::AreEqual(expectedStr, myGraph.printMatrix());
+		}
 	};
 }
